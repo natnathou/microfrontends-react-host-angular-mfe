@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './scss/app.scss';
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Mfe1Container } from './Mfe1/Mfe1Container';
 import { Root } from './Root';
 export const SHELL_ROUTER_EVENT_NAME = 'shell_router_event_name';
