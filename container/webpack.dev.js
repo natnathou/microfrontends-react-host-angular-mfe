@@ -14,9 +14,7 @@ const devConfig = {
 	},
 	devServer: {
 		port: 3000,
-		historyApiFallback: {
-			index: 'index.html',
-		},
+		historyApiFallback: true,
 	},
 	module: {
 		rules: [
@@ -49,9 +47,11 @@ const devConfig = {
 		}),
 		new ProgressBarPlugin(),
 		new ModuleFederationPlugin({
+			filename: 'remoteEntry.js',
 			name: 'container',
-			remotes: {},
-			shared: packageJson.dependencies,
+			remotes: {
+				mfe1: 'mfe1@http://localhost:4201/remoteEntry.js',
+			},
 		}),
 	],
 };

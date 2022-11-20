@@ -1,7 +1,9 @@
+const path = require('path');
+console.log(__dirname);
 module.exports = {
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
-		project: './tsconfig.json',
+		project: path.join(__dirname, 'tsconfig.json'),
 		sourceType: 'module',
 		ecmaFeatures: {
 			jsx: true, // Allows for the parsing of JSX
