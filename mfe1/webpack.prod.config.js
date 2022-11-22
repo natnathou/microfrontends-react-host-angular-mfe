@@ -6,3 +6,6 @@ const configProd = {
 };
 configProd.optimization.runtimeChunk = true;
 configProd.optimization.splitChunk = true;
+
+
+module.exports = configProd;
