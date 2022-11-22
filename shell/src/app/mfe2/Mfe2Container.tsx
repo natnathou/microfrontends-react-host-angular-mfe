@@ -19,3 +19,4 @@ export const Mfe2Container = () => {
 	}, []);
 	return  <div className={'mfe'}><div ref={ref} ></div></div>;
 };
+
