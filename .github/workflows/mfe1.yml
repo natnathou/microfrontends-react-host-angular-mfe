@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: cd /mfe1
+      - run: cd mfe1
       - run: npm ci
       - run: npm run build
 
