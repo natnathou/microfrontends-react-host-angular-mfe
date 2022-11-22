@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const { merge } = require('webpack-merge');
 const path = require('path');
 const commonConfig = require('./webpack.common');
@@ -5,9 +6,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-const webpack = require("webpack");
 const dotenv = require("dotenv");
 dotenv.config();
+
 const mapProcessEnv = (data) => {
 	const env = {};
 	if (data) {
@@ -20,13 +21,14 @@ const mapProcessEnv = (data) => {
 	return env;
 };
 
+
 const devConfig = {
 	mode: 'development',
 	output: {
-		publicPath: '/',
+		publicPath: 'auto',
 	},
 	devServer: {
-		port: 3000,
+		port: 4202,
 		historyApiFallback: true,
 	},
 	module: {
@@ -61,10 +63,9 @@ const devConfig = {
 		new ProgressBarPlugin(),
 		new ModuleFederationPlugin({
 			filename: 'remoteEntry.js',
-			name: 'container',
-			remotes: {
-				mfe1: 'mfe1@http://localhost:4201/remoteEntry.js',
-				mfe2: 'mfe2@http://localhost:4202/remoteEntry.js',
+			name: "mfe2",
+			exposes: {
+				"./Component": "./src/bootstrap.tsx",
 			},
 			shared: {
 				react: {
@@ -81,4 +82,5 @@ devConfig.plugins.push(
 		process: { env: { ...mapProcessEnv(process.env) } },
 	})
 );
+
 module.exports = merge(commonConfig, devConfig);

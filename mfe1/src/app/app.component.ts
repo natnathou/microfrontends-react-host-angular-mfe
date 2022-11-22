@@ -2,8 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {
   INITIAL_PATH,
-  MF_LIST_EVENT_NAME,
-  SHELL_ROUTER_EVENT_NAME,
+  EVENT_NAME_TO_BE_UPDATED_FROM_SHELL_ROUTING_CHANGES,
+  EVENT_NAME_TO_UPDATE_SHELL_FROM_ROUTING_CHANGES,
 } from 'src/bootstrap';
 
 @Component({
@@ -16,8 +16,8 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    @Inject(SHELL_ROUTER_EVENT_NAME) private sellRouterEventName: string,
-    @Inject(MF_LIST_EVENT_NAME) private mfListEventName: string[],
+    @Inject(EVENT_NAME_TO_UPDATE_SHELL_FROM_ROUTING_CHANGES) private eventNameToUpdateShellFromRoutingChanges: string,
+    @Inject(EVENT_NAME_TO_BE_UPDATED_FROM_SHELL_ROUTING_CHANGES) private eventNameToBeUpdatedFromShellRoutingChanges: string,
     @Inject(INITIAL_PATH) private initialPath: string
   ) {}
 
@@ -26,29 +26,30 @@ export class AppComponent {
       this.router.navigateByUrl(this.initialPath);
     }
     this.router.events.subscribe((obs) => {
-      if (obs instanceof NavigationEnd && this.sellRouterEventName) {
-        const customEvent = new CustomEvent(this.sellRouterEventName, {
+      if (obs instanceof NavigationEnd && this.eventNameToUpdateShellFromRoutingChanges) {
+        const customEvent = new CustomEvent(this.eventNameToUpdateShellFromRoutingChanges, {
           detail: obs.url,
         });
         window.dispatchEvent(customEvent);
       }
     });
 
-    this.mfListEventName.forEach((m) => {
-      window.addEventListener(m, (e) => {
+    if(this.eventNameToBeUpdatedFromShellRoutingChanges){
+      window.addEventListener(this.eventNameToBeUpdatedFromShellRoutingChanges, (e) => {
         const event = e as CustomEvent;
         if (event.detail !== this.router.url) {
           this.router.navigateByUrl(event.detail);
         }
       });
-    });
+    }
+
   }
 
   ngOnDestroy() {
-    this.mfListEventName.forEach((m) => {
-      window.removeEventListener(m, () => {
-        console.log(`${m} event is removed`);
+    if(this.eventNameToBeUpdatedFromShellRoutingChanges){
+      window.removeEventListener(this.eventNameToBeUpdatedFromShellRoutingChanges, () => {
+        console.log(`${this.eventNameToBeUpdatedFromShellRoutingChanges} event is removed from mfe1`);
       });
-    });
+    }
   }
 }

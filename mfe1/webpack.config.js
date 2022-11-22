@@ -9,8 +9,6 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const mapProcessEnv = (data) => {
-  console.log(data["IS_ISOLATE"]);
-  console.log(data["NODE_ENV"]);
   const env = {};
   if (data) {
     for (const [key, value] of Object.entries(data)) {

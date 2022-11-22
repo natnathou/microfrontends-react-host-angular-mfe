@@ -1,6 +1,6 @@
 export const ELEMENT_REF = 'ELEMENT_REF';
-export const SHELL_ROUTER_EVENT_NAME = 'SHELL_ROUTER_EVENT_NAME';
-export const MF_LIST_EVENT_NAME = 'MF_LIST_EVENT_NAME';
+export const EVENT_NAME_TO_UPDATE_SHELL_FROM_ROUTING_CHANGES = 'SHELL_ROUTER_EVENT_NAME';
+export const EVENT_NAME_TO_BE_UPDATED_FROM_SHELL_ROUTING_CHANGES = 'MF_LIST_EVENT_NAME';
 export const INITIAL_PATH = 'INITIAL_PATH';
 
 import { enableProdMode } from '@angular/core';
@@ -16,14 +16,14 @@ if (environment.production) {
 
 const mount = (
   element_name: string,
-  mfListEventName: string[] = [],
-  sellRouterEventName?: string,
+  eventNameToUpdateShellFromRoutingChanges?: string,
+  eventNameToBeUpdatedFromShellRoutingChanges?: string,
   initialPath?: string
 ) => {
   platformBrowserDynamic([
     { provide: ELEMENT_REF, useValue: element_name },
-    { provide: SHELL_ROUTER_EVENT_NAME, useValue: sellRouterEventName },
-    { provide: MF_LIST_EVENT_NAME, useValue: mfListEventName },
+    { provide: EVENT_NAME_TO_UPDATE_SHELL_FROM_ROUTING_CHANGES, useValue: eventNameToBeUpdatedFromShellRoutingChanges },
+    { provide: EVENT_NAME_TO_BE_UPDATED_FROM_SHELL_ROUTING_CHANGES, useValue: eventNameToUpdateShellFromRoutingChanges },
     { provide: INITIAL_PATH, useValue: initialPath },
   ])
     .bootstrapModule(AppModule)
