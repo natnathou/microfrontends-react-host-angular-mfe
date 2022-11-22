@@ -23,7 +23,7 @@ const mapProcessEnv = (data) => {
 const devConfig = {
 	mode: 'development',
 	output: {
-		publicPath: '/',
+		publicPath: '/shell/latest/',
 	},
 	devServer: {
 		port: 3000,
@@ -61,10 +61,10 @@ const devConfig = {
 		new ProgressBarPlugin(),
 		new ModuleFederationPlugin({
 			filename: 'remoteEntry.js',
-			name: 'container',
+			name: 'shell',
 			remotes: {
 				mfe1: 'mfe1@http://localhost:4201/remoteEntry.js',
-				mfe2: 'mfe2@http://localhost:4202/remoteEntry.js',
+				mfe2: 'mfe2.yml@http://localhost:4202/remoteEntry.js',
 			},
 			shared: {
 				react: {

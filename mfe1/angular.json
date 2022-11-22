@@ -55,7 +55,8 @@
 								}
 							],
 							"outputHashing": "all",
-							"extraWebpackConfig": "webpack.prod.config.js"
+							"extraWebpackConfig": "webpack.prod.config.js",
+              "deployUrl": "/mfe1/latest/"
 						},
 						"development": {
 							"buildOptimizer": false,
