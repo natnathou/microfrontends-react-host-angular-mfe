@@ -9,7 +9,7 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 dotenv.config();
-
+console.log(`HOSTTTTT ${process.env.HOST}`)
 const prodConfig = {
   mode: 'production',
   output: {
