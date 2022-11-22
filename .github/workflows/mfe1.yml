@@ -5,12 +5,12 @@ on:
     branches:
       - master
     paths:
-      - 'mfe1/**'
-      - './package.json'
-      - './package-lock.json'
-      - './angular.json'
-      - './tsconfig.json'
-      - '.github/workflows/login.yml'
+#      - 'mfe1/**'
+#      - './package.json'
+#      - './package-lock.json'
+#      - './angular.json'
+#      - './tsconfig.json'
+#      - '.github/workflows/mfe1.yml'
 
 defaults:
   run:

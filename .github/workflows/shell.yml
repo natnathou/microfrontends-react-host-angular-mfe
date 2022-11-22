@@ -5,12 +5,12 @@ on:
     branches:
       - master
     paths:
-      - 'shell/**'
-      - './package.json'
-      - './package-lock.json'
-      - './angular.json'
-      - './tsconfig.json'
-      - '.github/workflows/login.yml'
+#      - 'shell/**'
+#      - './package.json'
+#      - './package-lock.json'
+#      - './angular.json'
+#      - './tsconfig.json'
+#      - '.github/workflows/shell.yml'
 
 defaults:
   run:
