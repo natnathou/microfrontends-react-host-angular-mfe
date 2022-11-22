@@ -86,7 +86,7 @@ const prodConfig = {
     }),
   ],
 };
-devConfig.plugins.push(
+prodConfig.plugins.push(
     new webpack.DefinePlugin({
       process: { env: { ...mapProcessEnv(process.env) } },
     })
