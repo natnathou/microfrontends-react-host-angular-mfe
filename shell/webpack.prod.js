@@ -1,12 +1,12 @@
 const { merge } = require('webpack-merge');
 const path = require('path');
-const commonConfig = require('./webpack.common');
+const devConfig = require('./webpack.dev');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const dotenv = require("dotenv");
 dotenv.config();
 
-const devConfig = {
+const prodConfig = {
   mode: 'production',
   output: {
     filename: '[name].[contenthash].js',
@@ -48,5 +48,4 @@ const devConfig = {
     }),
   ],
 };
-
-module.exports = merge(commonConfig, devConfig);
+module.exports = merge(prodConfig, devConfig);
