@@ -1,9 +1,13 @@
 const { merge } = require('webpack-merge');
 const path = require('path');
-const devConfig = require('./webpack.dev');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const commonConfig = require('./webpack.common');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 const dotenv = require("dotenv");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 dotenv.config();
 
 const prodConfig = {
@@ -43,9 +47,31 @@ const prodConfig = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'public', 'index.html'),
+      title: 'React',
+      description: 'React',
+    }),
+    new ProgressBarPlugin(),
+    new ModuleFederationPlugin({
+      filename: 'remoteEntry.js',
+      name: 'shell',
+      remotes: {
+        mfe1: 'mfe1@http://localhost:4201/remoteEntry.js',
+        mfe2: 'mfe2.yml@http://localhost:4202/remoteEntry.js',
+      },
+      shared: {
+        react: {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "18.2.0",
+        }
+      }
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
   ],
 };
-module.exports = merge(prodConfig, devConfig);
+module.exports = merge(commonConfig, prodConfig);
