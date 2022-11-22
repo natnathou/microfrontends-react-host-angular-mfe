@@ -2,8 +2,8 @@ const configDev = require("./webpack.config");
 
 const configProd = {
   ...configDev,
-  optimization: { ...configDev.optimization },
+  // optimization: { ...configDev.optimization },
 };
-configProd.optimization.runtimeChunk = true;
+// configProd.optimization.runtimeChunk = true;
 
-module.exports = configProd;
+module.exports = configDev;
