@@ -22,8 +22,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: cd mfe1
-      - run: npm ci
+      - run: cd mfe1 &&  npm ci
       - run: npm run build
 
       - uses: shinyinc/action-aws-cli@v1.2
