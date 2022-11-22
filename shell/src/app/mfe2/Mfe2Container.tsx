@@ -17,5 +17,5 @@ export const Mfe2Container = () => {
 			);
 		}
 	}, []);
-	return <div ref={ref}></div>;
+	return  <div className={'mfe'}><div ref={ref} ></div></div>;
 };

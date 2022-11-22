@@ -17,7 +17,7 @@ const router = createBrowserRouter([
 				element: <Mfe1Container />,
 			},
 			{
-				path: 'mfe2.yml',
+				path: 'mfe2',
 				element: <Mfe2Container />,
 			},
 		],

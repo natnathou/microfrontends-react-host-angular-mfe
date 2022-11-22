@@ -23,7 +23,7 @@ const mapProcessEnv = (data) => {
 const devConfig = {
 	mode: 'development',
 	output: {
-		publicPath: '/shell/latest/',
+		publicPath: '',
 	},
 	devServer: {
 		port: 3000,
@@ -64,7 +64,7 @@ const devConfig = {
 			name: 'shell',
 			remotes: {
 				mfe1: 'mfe1@http://localhost:4201/remoteEntry.js',
-				mfe2: 'mfe2.yml@http://localhost:4202/remoteEntry.js',
+				mfe2: 'mfe2@http://localhost:4202/remoteEntry.js',
 			},
 			shared: {
 				react: {
