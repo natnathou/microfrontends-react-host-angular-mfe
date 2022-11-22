@@ -58,8 +58,8 @@ const prodConfig = {
       filename: 'remoteEntry.js',
       name: 'shell',
       remotes: {
-        mfe1: 'mfe1@http://localhost:4201/remoteEntry.js',
-        mfe2: 'mfe2.yml@http://localhost:4202/remoteEntry.js',
+        mfe1: `mfe1@${process.env.HOST}/mfe1/latest/remoteEntry.js`,
+        mfe2: `mfe2@${process.env.HOST}/mfe2/latest/remoteEntry.js`,
       },
       shared: {
         react: {
