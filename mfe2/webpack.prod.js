@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const { merge } = require('webpack-merge');
 const path = require('path');
 const commonConfig = require('./webpack.common');
@@ -8,6 +9,19 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const dotenv = require("dotenv");
 dotenv.config();
+
+const mapProcessEnv = (data) => {
+  const env = {};
+  if (data) {
+    for (const [key, value] of Object.entries(data)) {
+      if (value && key) {
+        env[key] = JSON.stringify(value);
+      }
+    }
+  }
+  return env;
+};
+
 
 const prodConfig = {
   mode: 'production',
@@ -72,5 +86,11 @@ const prodConfig = {
     }),
   ],
 };
+
+prodConfig.plugins.push(
+    new webpack.DefinePlugin({
+      process: { env: { ...mapProcessEnv(process.env) } },
+    })
+);
 
 module.exports = merge(commonConfig, prodConfig);

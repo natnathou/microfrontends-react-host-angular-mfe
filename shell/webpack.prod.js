@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const { merge } = require('webpack-merge');
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -10,6 +11,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 dotenv.config();
 
+const mapProcessEnv = (data) => {
+  const env = {};
+  if (data) {
+    for (const [key, value] of Object.entries(data)) {
+      if (value && key) {
+        env[key] = JSON.stringify(value);
+      }
+    }
+  }
+  return env;
+};
 const prodConfig = {
   mode: 'production',
   output: {
@@ -74,5 +86,11 @@ const prodConfig = {
     }),
   ],
 };
+devConfig.plugins.push(
+    new webpack.DefinePlugin({
+      process: { env: { ...mapProcessEnv(process.env) } },
+    })
+);
+
 module.exports = merge(commonConfig, prodConfig);
 
