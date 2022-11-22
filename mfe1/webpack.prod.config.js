@@ -5,7 +5,5 @@ const configProd = {
   optimization: { ...configDev.optimization },
 };
 configProd.optimization.runtimeChunk = true;
-configProd.optimization.splitChunk = true;
-
 
 module.exports = configProd;
