@@ -14,7 +14,7 @@ export const Root = () => {
 	}, []);
 	return (
 		<div>
-			Header
+			Header Shell
 			<Outlet />
 		</div>
 	);
