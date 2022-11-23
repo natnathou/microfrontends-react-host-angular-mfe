@@ -14,6 +14,7 @@ export const Root = () => {
 	}, []);
 	return (
 		<div>
+			new update
 			Header Shell
 			<Outlet />
 		</div>

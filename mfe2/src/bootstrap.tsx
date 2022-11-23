@@ -17,7 +17,7 @@ export const mount = (
     />);
 };
 
-if (process.env.IS_ISOLATE) {
+if (process.env.IS_ISOLATE === 'true') {
     const rootElement = document.getElementById('root');
     mount(rootElement);
 }
