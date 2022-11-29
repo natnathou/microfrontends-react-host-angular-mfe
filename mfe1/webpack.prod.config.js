@@ -5,5 +5,6 @@ const configProd = {
   optimization: { ...configDev.optimization },
 };
 configProd.optimization.runtimeChunk = true;
+configProd.devtool='source-map';
 
 module.exports = configDev;

@@ -29,6 +29,7 @@ const prodConfig = {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/shell/latest/',
   },
+  devtool: 'source-map',
   optimization: {
     splitChunks: {
       chunks: 'all',

@@ -31,6 +31,7 @@ const devConfig = {
 		port: 4202,
 		historyApiFallback: true,
 	},
+	devtool: 'eval-cheap-module-source-map',
 	module: {
 		rules: [
 			{

@@ -30,6 +30,7 @@ const prodConfig = {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/mfe2/latest/',
   },
+  devtool: 'source-map',
   optimization: {
     splitChunks: {
       chunks: 'all',

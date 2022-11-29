@@ -60,5 +60,5 @@ config.plugins.push(new ProgressBarPlugin());
 
 delete config.plugins[0]._options.library;
 config.output.scriptType = "text/javascript";
-
-module.exports = config;
+config.devtool='eval-cheap-module-source-map';
+  module.exports = config;
