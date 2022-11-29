@@ -4,7 +4,7 @@ import { mount } from 'mfe1/Component';
 import { EVENT_NAME_TO_UPDATE_MFE_FROM_ROUTING_CHANGES, EVENT_NAME_TO_BE_UPDATED_FROM_MFE_ROUTING_CHANGES } from '../App';
 const MF1_ELEMENT = 'mf1-element';
 
-export const Mfe1Container = () => {
+const Mfe1Container = () => {
 	const ref = useRef<HTMLDivElement>(null);
 	const location = useLocation();
 
@@ -22,3 +22,5 @@ export const Mfe1Container = () => {
 	}, []);
 	return <div ref={ref}></div>;
 };
+
+export default Mfe1Container;
